@@ -1,7 +1,7 @@
  .sidebars{
      display: flex;
      flex-direction: column;
-     flex:0.40;
+     flex:0.37;
  }
   .sidebar__header{
      display: flex;

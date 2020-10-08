@@ -1,7 +1,7 @@
 .chats {
     display:flex;
     flex-direction: column;
-    flex: 0.60;
+    flex: 0.73;
 }
 .chat__header{
     display:flex;
