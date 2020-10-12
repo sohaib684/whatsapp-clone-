@@ -15,6 +15,10 @@ mongoose.connect(connection_url, {
     useNewUrlParser: true,
     useUnifiedToplogy: true
 });
+const db = mongoose.connection;
+db.once("open",()=>{
+    console.log("Db connected");
+})
 
 //app.use(body_parser());
 app.use(express.json());
