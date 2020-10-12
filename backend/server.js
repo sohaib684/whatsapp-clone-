@@ -1,12 +1,20 @@
 const Message = require("./dbMessages.js");
 const express = require("express");//importing
 const mongoose = require("mongoose");
-
+ const Pusher =require("pusher");
 const body_parser = require("body-parser")
 
 const app = express() //app config
 const port = process.env.PORT || 9000
-const connection_url = "mongodb://localhost:27017/mongo_database"; //db config 
+
+ const pusher = new Pusher({
+     appId: '1087028',
+     key: '092a44cb9ee81bb0c1c4',
+     secret: '9ac60b8d16368a96090d',
+     cluster: 'ap2',
+     encrypted: true
+   });
+ const connection_url = "mongodb://localhost:27017/mongo_database"; //db config 
 
 const messageContent = require("./dbMessages");
 
@@ -15,9 +23,18 @@ mongoose.connect(connection_url, {
     useNewUrlParser: true,
     useUnifiedToplogy: true
 });
+const db =mongoose.connection;
+db.once("open",()=> {
+    console.log("DB connected");
+    const msgCollections =db.collection("messagecontents");
+    const changeStream =msgCollections.watch();
+    changeStream.on("change", (change) => {
+        console.log("change occured",change);
+    });
+});
 
-//app.use(body_parser());
-app.use(express.json());
+app.use(body_parser());
+app.use(express.json());//middleware
 
 app.get('/', (req, res) => res.status(200).send("something")) //api routes
 app.post('/message/new', (req, res) => {
