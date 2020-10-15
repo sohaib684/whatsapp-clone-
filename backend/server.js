@@ -14,7 +14,7 @@ const port = process.env.PORT || 9000
      cluster: 'ap2',
      encrypted: true
    });
- const connection_url = "mongodb://localhost:27017/mongo_database"; //db config 
+ const connection_url = "mongodb+srv://root:gT9GFoquvxCBUjDL@cluster0.7fgmm.mongodb.net/whatsappdb?retryWrites=true&w=majority"; //db config 
 
 const messageContent = require("./dbMessages");
 
