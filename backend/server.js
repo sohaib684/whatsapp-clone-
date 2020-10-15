@@ -41,7 +41,7 @@ app.post('/message/new', (req, res) => {
     const dbMessaage = req.body;
 
     Message.create(dbMessaage, (err, data) => {
-            if (err) 
+            if (err)    
                 res.status(500).send(err)
             else 
                 res.status(201).send(data)
