@@ -6,7 +6,17 @@ const body_parser = require("body-parser")
 
 const app = express() //app config
 const port = process.env.PORT || 9000
-const connection_url = "mongodb://localhost:27017/mongo_database"; //db config 
+const Pusher = require('pusher');
+
+const pusher = new Pusher({
+  appId: '1087028',
+  key: '092a44cb9ee81bb0c1c4',
+  secret: '9ac60b8d16368a96090d',
+  cluster: 'ap2',
+  encrypted: true
+});
+
+const connection_url = "mongodb+srv://root:gT9GFoquvxCBUjDL@cluster0.7fgmm.mongodb.net/whatsappdb?retryWrites=true&w=majority"; //db config 
 
 const messageContent = require("./dbMessages");
 
@@ -18,7 +28,12 @@ mongoose.connect(connection_url, {
 const db = mongoose.connection;
 db.once("open",()=>{
     console.log("Db connected");
-})
+   const msgCollection = db.collection("messagecontents");
+    const changeStream = msgCollection.watch();
+    changeStream.on("change",(change) => {
+       console.log("change",change);
+    });
+});
 
 //app.use(body_parser());
 app.use(express.json());
@@ -28,7 +43,7 @@ app.post('/message/new', (req, res) => {
     const dbMessaage = req.body;
 
     Message.create(dbMessaage, (err, data) => {
-            if (err) 
+            if (err)    
                 res.status(500).send(err)
             else 
                 res.status(201).send(data)
