@@ -33,11 +33,11 @@ function Sidebar(){
            </div>
                   </div>
                   <div className="sidebar__chats">
-                      <SidebarChat name="Maria"  last_message="see you later💕💖"/>
-                      <SidebarChat name="Shayan" last_message="haaha sach mei"/>
-                      <SidebarChat name="Rahul" last_message="lol😂😂😂"/>
-                      <SidebarChat name="faraz" last_message="Happy birthday🎉😃"/>
-                      <SidebarChat name="papa" last_message="see you later😊"/>
+                      <SidebarChat name="Nancy"  last_message="waiting for the college to reopen...🤷‍♂️"/>
+                      <SidebarChat name="Shayan" last_message="pdho jaakr kya khel rhe itna "/>
+                      <SidebarChat name="Rahul" last_message="kal aate hai ghar pr ^_^"/>
+                      <SidebarChat name="Emma" last_message="Happy birthday🎉😃"/>
+                      <SidebarChat name="Pona" last_message="Chal hatt"/>
                   </div>
         </div>
         
