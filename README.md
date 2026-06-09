@@ -1,6 +1,6 @@
 <img width="1320" height="544" alt="updated_whatsapp_demo" src="https://github.com/user-attachments/assets/498aac45-d060-4603-a200-0ac4c0da8514" />
 
-
+Run `npm start` for Front-end and `npm run server` Back-end Database connected.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
